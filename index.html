@@ -1,126 +1,242 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title> Dark entry ☠️</title>  
-  
-<style>  
-* {  
-  margin: 0;  
-  padding: 0;  
-  box-sizing: border-box;  
-}  
-  
-body {  
-  overflow: hidden;  
-  font-family: 'Segoe UI', sans-serif;  
-  background: linear-gradient(#0f2027, #203a43, #2c5364);  
-  height: 100vh;  
-}  
-  
-/* Snow container */  
-.snow {  
-  position: fixed;  
-  width: 100%;  
-  height: 100%;  
-  pointer-events: none;  
-}  
-  
-/* Snowflakes */  
-.snow span {  
-  position: absolute;  
-  top: -10px;  
-  color: white;  
-  font-size: 14px;  
-  animation: fall linear infinite;  
-}  
-  
-@keyframes fall {  
-  0% {  
-    transform: translateY(-10vh);  
-  }  
-  100% {  
-    transform: translateY(110vh);  
-  }  
-}  
-  
-/* Entry screen */  
-#entry {  
-  position: absolute;  
-  width: 100%;  
-  height: 100%;  
-  display: flex;  
-  justify-content: center;  
-  align-items: center;  
-}  
-  
-/* Button */  
-button {  
-  padding: 15px 35px;  
-  font-size: 20px;  
-  border: none;  
-  border-radius: 30px;  
-  background: white;  
-  color: black;  
-  cursor: pointer;  
-  transition: 0.3s;  
-}  
-  
-button:hover {  
-  transform: scale(1.1);  
-  background: #ddd;  
-}  
-  
-/* Main content (kept but not used now) */  
-#main {  
-  display: none;  
-  color: white;  
-  text-align: center;  
-  margin-top: 40vh;  
-  font-size: 30px;  
-}  
-</style>  
-  
-</head>  
-<body>  
-  
-<!-- Snow -->  
-<div class="snow" id="snow"></div>  
-  
-<!-- Entry Screen -->  
-<div id="entry">  
-  <button onclick="enterPage()">Click to Enter ❄️</button>  
-</div>  
-  
-<!-- Main Content (fallback if needed) -->  
-<div id="main">  
-  Welcome 🎉    
-</div>  
-  
-<script>  
-// Generate snowflakes  
-const snowContainer = document.getElementById("snow");  
-  
-for (let i = 0; i < 80; i++) {  
-  let snow = document.createElement("span");  
-  snow.innerHTML = "❄";  
-    
-  snow.style.left = Math.random() * 100 + "vw";  
-    
-  // SLOWER falling (important change)
-  snow.style.animationDuration = (6 + Math.random() * 8) + "s";  
-  
-  snow.style.opacity = Math.random();  
-  
-  snowContainer.appendChild(snow);  
-}  
-  
-// Enter button function (redirect to main.html)
-function enterPage() {  
-  window.location.href = "main.html";  
-}  
-</script>  
-  
-</body>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Entry ☠️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(#0f2027, #203a43, #2c5364);
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Snow Container */
+        .snow {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Snowflakes - Much slower and smoother */
+        .snow span {
+            position: absolute;
+            top: -15px;
+            color: #ffffff;
+            font-size: 18px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+            animation: snowfall linear infinite;
+            opacity: 0.9;
+            user-select: none;
+        }
+
+        /* Slower, more natural snowfall animation */
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-15vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(115vh) rotate(360deg);
+            }
+        }
+
+        /* Gentle side sway for more realistic snow */
+        .snow span:nth-child(odd) {
+            animation-name: snowfall-sway;
+        }
+
+        @keyframes snowfall-sway {
+            0% {
+                transform: translateY(-15vh) translateX(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(50vh) translateX(25px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(115vh) translateX(0) rotate(360deg);
+            }
+        }
+
+        /* Entry Screen */
+        #entry {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        /* Button with enhanced animations */
+        button {
+            padding: 18px 45px;
+            font-size: 22px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #0f2027;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.6),
+                transparent
+            );
+            transition: 0.7s;
+        }
+
+        button:hover::before {
+            left: 300%;
+        }
+
+        button:hover {
+            transform: scale(1.12) translateY(-4px);
+            background: white;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Glow effect on button */
+        button {
+            animation: button-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes button-glow {
+            0%, 100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); }
+            50% { box-shadow: 0 10px 45px rgba(255, 255, 255, 0.3); }
+        }
+
+        /* Main content (kept for fallback) */
+        #main {
+            display: none;
+            color: white;
+            text-align: center;
+            margin-top: 40vh;
+            font-size: 32px;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        /* Fade out entry screen when entering */
+        #entry.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Snow Container -->
+    <div class="snow" id="snow"></div>
+
+    <!-- Entry Screen -->
+    <div id="entry">
+        <button onclick="enterPage()">Click to Enter ❄️</button>
+    </div>
+
+    <!-- Main Content (fallback) -->
+    <div id="main">
+        Welcome 🎉
+    </div>
+
+    <script>
+        // Generate more realistic and slower snowflakes
+        const snowContainer = document.getElementById("snow");
+
+        function createSnowflake() {
+            const snow = document.createElement("span");
+            snow.innerHTML = "❄";
+
+            // Random horizontal position
+            snow.style.left = Math.random() * 100 + "vw";
+
+            // Vary snowflake size (smaller to larger)
+            const size = Math.random() * 12 + 14;
+            snow.style.fontSize = `${size}px`;
+
+            // Much slower falling speed (as requested)
+            const duration = 12 + Math.random() * 18; // 12 to 30 seconds
+            snow.style.animationDuration = `${duration}s`;
+
+            // Random opacity
+            snow.style.opacity = Math.random() * 0.6 + 0.4;
+
+            // Random delay so snow doesn't all start at once
+            snow.style.animationDelay = `-${Math.random() * 20}s`;
+
+            // Add slight variation in sway using different classes
+            if (Math.random() > 0.5) {
+                snow.style.animationName = "snowfall-sway";
+            }
+
+            snowContainer.appendChild(snow);
+
+            // Remove snowflake after it falls to improve performance
+            setTimeout(() => {
+                snow.remove();
+            }, duration * 1000 + 1000);
+        }
+
+        // Create snowflakes continuously for better effect
+        for (let i = 0; i < 120; i++) {
+            createSnowflake();
+        }
+
+        // Continuously generate new snowflakes
+        setInterval(() => {
+            createSnowflake();
+        }, 180);
+
+        // Enter button function with smooth transition
+        function enterPage() {
+            const entryScreen = document.getElementById("entry");
+            
+            // Add fade-out class for smooth transition
+            entryScreen.classList.add("fade-out");
+
+            // Redirect after transition completes
+            setTimeout(() => {
+                window.location.href = "main.html";
+            }, 1200); // Matches the transition duration
+        }
+
+        // Optional: Press Enter key to also enter
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                enterPage();
+            }
+        });
+    </script>
+
+</body>
 </html>
