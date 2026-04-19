@@ -1,262 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shaa - Profile</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dark Profile ✦</title>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #1a0f00, #3d1f00);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .profile-container {
-      width: 380px;
-      background: rgba(0, 0, 0, 0.85);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 0 40px rgba(255, 80, 0, 0.4);
-      position: relative;
-      border: 2px solid #333;
-    }
+body {
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at center, #ff8c00, #0a0a0a 70%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    /* Decorative Dark Frame */
-    .frame {
-      position: absolute;
-      top: -40px;
-      left: -40px;
-      right: -40px;
-      bottom: -40px;
-      background: radial-gradient(circle, rgba(139,0,0,0.2), transparent);
-      border: 15px solid #1a0f00;
-      border-image: linear-gradient(#4d2c0f, #1a0f00) 1;
-      z-index: -1;
-      border-radius: 50px;
-    }
+/* Snow */
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: white;
+  font-size: 14px;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
 
-    .profile-header {
-      text-align: center;
-      padding: 30px 20px 20px;
-    }
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
 
-    .profile-pic {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 0 auto 15px;
-      border: 4px solid #ff6600;
-      box-shadow: 0 0 25px rgba(255, 102, 0, 0.6);
-    }
+/* Main Container */
+.container {
+  text-align: center;
+  position: relative;
+}
 
-    .profile-pic img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+/* Profile Image */
+.profile-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 3px solid white;
+  object-fit: cover;
+  margin-bottom: 15px;
+  box-shadow: 0 0 25px rgba(255,255,255,0.4);
+}
 
-    .username {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      color: #fff;
-      margin-bottom: 8px;
-      text-shadow: 0 0 10px #ff6600;
-    }
+/* Name */
+.name {
+  font-size: 42px;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 5px;
+}
 
-    .bio {
-      color: #ffccaa;
-      font-size: 17px;
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
+.bio {
+  font-size: 18px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
 
-    .location {
-      color: #ccc;
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
+.location {
+  font-size: 16px;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
 
-    .activity-box {
-      margin: 25px 20px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      backdrop-filter: blur(10px);
-    }
+/* Glass Card */
+.card {
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 15px;
+  width: 280px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
 
-    .activity-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid #ff6600;
-    }
+.card img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
 
-    .activity-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+.card-text {
+  text-align: left;
+}
 
-    .activity-info {
-      flex: 1;
-    }
+.card-text span {
+  display: block;
+  font-size: 13px;
+  opacity: 0.7;
+}
 
-    .activity-username {
-      color: white;
-      font-weight: 600;
-      font-size: 16px;
-    }
+/* Social Icons */
+.icons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
 
-    .activity-status {
-      color: #aaa;
-      font-size: 13px;
-    }
+.icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: gold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: black;
+  box-shadow: 0 0 15px gold;
+  transition: 0.3s;
+  cursor: pointer;
+}
 
-    .butterfly {
-      background: #00aaff;
-      color: white;
-      font-size: 12px;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-weight: bold;
-    }
+.icon:hover {
+  transform: scale(1.2);
+}
 
-    .nav-bar {
-      background: rgba(0,0,0,0.9);
-      padding: 12px 15px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      border-top: 1px solid #444;
-    }
+/* Wings */
+.wing {
+  position: absolute;
+  font-size: 30px;
+  opacity: 0.7;
+}
 
-    .nav-icon {
-      width: 38px;
-      height: 38px;
-      background: linear-gradient(#ffaa00, #ff6600);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 20px;
-      box-shadow: 0 0 15px rgba(255, 102, 0, 0.7);
-      transition: all 0.3s;
-    }
+.wing.left {
+  left: 10%;
+  top: 60%;
+}
 
-    .nav-icon:hover {
-      transform: scale(1.15);
-    }
+.wing.bottom {
+  bottom: 5%;
+}
 
-    .wing {
-      position: absolute;
-      font-size: 28px;
-      color: #fff;
-      opacity: 0.8;
-      filter: drop-shadow(0 0 8px #fff);
-      animation: wingFloat 4s infinite alternate;
-    }
+/* Views */
+.views {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  opacity: 0.7;
+}
 
-    .wing-left { left: 25px; bottom: 80px; transform: rotate(-30deg); }
-    .wing-right { right: 25px; bottom: 80px; transform: rotate(30deg); }
-
-    .views {
-      position: absolute;
-      bottom: 18px;
-      left: 25px;
-      color: #ddd;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .snowflake {
-      position: absolute;
-      color: #fff;
-      font-size: 18px;
-      opacity: 0.7;
-      animation: snowfall 8s linear infinite;
-    }
-
-    @keyframes wingFloat {
-      from { transform: translateY(0) rotate(-30deg); }
-      to { transform: translateY(-15px) rotate(-30deg); }
-    }
-
-    @keyframes snowfall {
-      0% { transform: translateY(-100px); }
-      100% { transform: translateY(600px); }
-    }
-  </style>
+</style>
 </head>
+
 <body>
 
-  <div class="profile-container">
-    <div class="frame"></div>
+<div class="container">
 
-    <div class="profile-header">
-      <div class="profile-pic">
-        <img src="https://i.imgur.com/8zK7p9L.jpeg" alt="Profile Picture"> <!-- Replace with your actual image URL -->
-      </div>
-      <div class="username">♡ Shaa</div>
-      <div class="bio">Dark DomiNance ..</div>
-      <div class="location">
-        📍 Madurai
-      </div>
+  <!-- Profile -->
+  <img src="https://i.ibb.co/7QpKsCX/girl.jpg" class="profile-img">
+
+  <div class="name">♡ Shaa</div>
+  <div class="bio">Dark DomiNance ..</div>
+  <div class="location">📍 Madurai</div>
+
+  <!-- Card -->
+  <div class="card">
+    <img src="https://i.ibb.co/6r6p9QF/sketch.jpg">
+    <div class="card-text">
+      <b>acpxp 🦋 3luv</b>
+      <span>last seen 1 hour ago</span>
     </div>
-
-    <div class="activity-box">
-      <div class="activity-avatar">
-        <img src="https://i.imgur.com/5vX9k2m.png" alt="acpxp"> <!-- Replace with actual sketch image -->
-      </div>
-      <div class="activity-info">
-        <div class="activity-username">acpxp <span class="butterfly">🦋 3luv</span></div>
-        <div class="activity-status">last seen 1 hour ago</div>
-      </div>
-    </div>
-
-    <div class="nav-bar">
-      <div class="wing wing-left">🪽</div>
-      <div class="nav-icon">📷</div>
-      <div class="nav-icon">✈️</div>
-      <div class="nav-icon">👥</div>
-      <div class="nav-icon">🎵</div>
-      <div class="nav-icon">▶️</div>
-      <div class="wing wing-right">🪽</div>
-    </div>
-
-    <div class="views">
-      👁 <strong>454</strong>
-    </div>
-
-    <!-- Snowflakes -->
-    <div class="snowflake" style="top:10%; left:15%; animation-delay:0s;">❄</div>
-    <div class="snowflake" style="top:20%; left:75%; animation-delay:2s;">❄</div>
-    <div class="snowflake" style="top:35%; left:25%; animation-delay:4s;">❄</div>
-    <div class="snowflake" style="top:60%; left:80%; animation-delay:1s;">❄</div>
   </div>
+
+  <!-- Icons -->
+  <div class="icons">
+    <div class="icon">📷</div>
+    <div class="icon">✈️</div>
+    <div class="icon">💬</div>
+    <div class="icon">🎵</div>
+    <div class="icon">▶️</div>
+  </div>
+
+</div>
+
+<!-- Wings -->
+<div class="wing left">🪽</div>
+<div class="wing bottom">🪽</div>
+
+<!-- Views -->
+<div class="views">👁️ 454</div>
+
+<script>
+// Snow generator
+function createSnow() {
+  const snow = document.createElement("div");
+  snow.classList.add("snowflake");
+  snow.innerHTML = "❄";
+  snow.style.left = Math.random() * window.innerWidth + "px";
+  snow.style.animationDuration = (3 + Math.random() * 5) + "s";
+  document.body.appendChild(snow);
+
+  setTimeout(() => snow.remove(), 8000);
+}
+
+setInterval(createSnow, 150);
+</script>
 
 </body>
 </html>
