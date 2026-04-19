@@ -47,23 +47,13 @@ body {
   position: relative;
 }
 
-  .icon-img {
+/* ICONS */
+.icon-img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 15px gold;
-  transition: 0.3s;
 }
 
-.icon-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 .icon-wrap {
   position: relative;
   display: inline-block;
@@ -85,23 +75,80 @@ body {
   box-shadow: 0 0 25px rgba(255,255,255,0.4);
 }
 
-/* Name */
+/* NAME WITH PARTICLES */
 .name {
   font-size: 42px;
   font-family: 'Playfair Display', serif;
   margin-bottom: 5px;
+  position: relative;
+
+  background: linear-gradient(90deg, #fff, #ffcc70, #fff);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shine 5s linear infinite, fadeUp 1s ease forwards;
 }
 
+/* Glow pulse */
+.name::after {
+  content: "Babayaga";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255, 200, 100, 0.4),
+               0 0 20px rgba(255, 150, 50, 0.3);
+  animation: glowPulse 3s infinite alternate;
+}
+
+/* Dark particles inside text */
+.name::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0,0,0,0.6) 2px, transparent 3px);
+  background-size: 20px 20px;
+  opacity: 0.4;
+  animation: moveParticles 10s linear infinite;
+  mix-blend-mode: overlay;
+}
+
+/* Animations */
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+@keyframes glowPulse {
+  from { opacity: 0.4; }
+  to { opacity: 0.8; }
+}
+
+@keyframes moveParticles {
+  from { background-position: 0 0; }
+  to { background-position: 200px 200px; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* TEXT ANIMATIONS */
 .bio {
   font-size: 18px;
-  opacity: 0.8;
+  opacity: 0;
   margin-bottom: 10px;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.4s;
 }
 
 .location {
   font-size: 16px;
-  opacity: 0.7;
+  opacity: 0;
   margin-bottom: 20px;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.7s;
 }
 
 /* Glass Card */
@@ -116,16 +163,15 @@ body {
   align-items: center;
   gap: 12px;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
+
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 1s;
 }
 
 .card img {
   width: 45px;
   height: 45px;
   border-radius: 50%;
-}
-
-.card-text {
-  text-align: left;
 }
 
 .card-text span {
@@ -135,13 +181,11 @@ body {
 }
 
 /* icons */
-
 .icons {
   margin-top: 25px;
   display: flex;
   justify-content: center;
   gap: 18px;
-  position: relative;
 }
 
 .social-btn {
@@ -150,7 +194,6 @@ body {
   object-fit: contain;
   filter: drop-shadow(0 0 10px gold);
   transition: 0.3s ease;
-  cursor: pointer;
 }
 
 .social-btn:hover {
@@ -158,30 +201,17 @@ body {
   filter: drop-shadow(0 0 20px #ffcc70);
 }
 
-.icons a {
-  display: inline-block;
-}
 /* Wings */
-
-
 .wing {
   position: absolute;
   font-size: 22px;
   opacity: 0.9;
   top: 50%;
   transform: translateY(-50%);
-  pointer-events: none;
 }
 
-/* Left wing (Instagram) */
-.wing-left {
-  left: -20px;
-}
-
-/* Right wing (YouTube) */
-.wing-right {
-  right: -20px;
-}
+.wing-left { left: -20px; }
+.wing-right { right: -20px; }
 
 /* Confirm Box */
 .confirm-box {
@@ -194,7 +224,6 @@ body {
   align-items: center;
   justify-content: center;
   background: rgba(0,0,0,0.7);
-  z-index: 999;
 }
 
 .confirm-card {
@@ -203,8 +232,6 @@ body {
   border-radius: 20px;
   background: #111;
   color: white;
-  box-shadow: 0 0 25px rgba(0,0,0,0.8);
-  text-align: left;
   animation: pop 0.3s ease;
 }
 
@@ -213,27 +240,15 @@ body {
   to { transform: scale(1); opacity: 1; }
 }
 
-.confirm-card h3 {
-  margin-bottom: 10px;
-}
-
-.confirm-card p {
-  font-size: 14px;
-  opacity: 0.7;
-}
-
 .url-box {
   background: #2a2a2a;
   padding: 8px;
   border-radius: 10px;
   margin: 10px 0 15px;
-  font-size: 13px;
-  word-break: break-all;
 }
 
 .confirm-actions {
   display: flex;
-  justify-content: space-between;
 }
 
 .confirm-actions button {
@@ -241,29 +256,15 @@ body {
   padding: 10px;
   border: none;
   border-radius: 10px;
-  cursor: pointer;
   margin: 0 5px;
-  font-weight: 500;
 }
 
 .visit {
   background: linear-gradient(45deg, #7b2ff7, #f107a3);
-  color: white;
 }
 
 .cancel {
   background: #333;
-  color: white;
-}
-
-
-
-/* Views */
-.views {
-  position: absolute;
-  bottom: 10px;
-  left: 15px;
-  opacity: 0.7;
 }
 
 </style>
@@ -273,74 +274,54 @@ body {
 
 <div class="container">
 
-  <!-- Profile -->
-  <img src="pfg.jpg" class="profile-img">
+<img src="pfg.jpg" class="profile-img">
 
-  <div class="name">Babayaga</div>
-  <div class="bio">Dark Dominance ..</div>
-  <div class="location">📍 coimbatore</div>
+<div class="name">Babayaga</div>
+<div class="bio">Dark Dominance ..</div>
+<div class="location">📍 coimbatore</div>
 
-  <!-- Card -->
-  <div class="card">
-    <img src="IMG_20260417_151049_449.webp">
-    <div class="card-text">
-      <b>acpxp 🦋 3luv</b>
-      <span>last seen 1 hour ago</span>
-    </div>
+<div class="card">
+  <img src="IMG_20260417_151049_449.webp">
+  <div class="card-text">
+    <b>acpxp 🦋 3luv</b>
+    <span>last seen 1 hour ago</span>
   </div>
-
-  <!-- Icons -->
-
-
-
-
-
+</div>
 
 <div class="icons">
 
-  <!-- Instagram with left wing -->
-  <div class="icon-wrap">
-    <span class="wing wing-left">🪽</span>
-    <a href="#" onclick="openConfirm('https://www.instagram.com/babayaga__4luv?igsh=MXE1c2swemg5eHFtdQ==')">
-      <img src="instabutton.webp" class="social-btn">
-    </a>
-  </div>
+<div class="icon-wrap">
+<span class="wing wing-left">🪽</span>
+<a href="#" onclick="openConfirm('https://www.instagram.com/babayaga__4luv')">
+<img src="instabutton.webp" class="social-btn">
+</a>
+</div>
 
-  <a href="#" onclick="openConfirm('https://t.me/yourlink')">
-    <img src="telebutton.webp" class="social-btn">
-  </a>
+<a href="#" onclick="openConfirm('https://t.me/yourlink')">
+<img src="telebutton.webp" class="social-btn">
+</a>
 
-  <a href="#" onclick="openConfirm('https://discord.gg/yourlink')">
-    <img src="disbutton.webp" class="social-btn">
-  </a>
+<a href="#" onclick="openConfirm('https://discord.gg/yourlink')">
+<img src="disbutton.webp" class="social-btn">
+</a>
 
-  <a href="#" onclick="openConfirm('https://spotify.com/...')">
-    <img src="spotbutton.webp" class="social-btn">
-  </a>
+<a href="#" onclick="openConfirm('https://spotify.com/...')">
+<img src="spotbutton.webp" class="social-btn">
+</a>
 
-  <!-- YouTube with right wing -->
-  <div class="icon-wrap">
-    <a href="#" onclick="openConfirm('https://youtube.com/...')">
-      <img src="tubebutton.webp" class="social-btn">
-    </a>
-    <span class="wing wing-right">🪽</span>
-  </div>
+<div class="icon-wrap">
+<a href="#" onclick="openConfirm('https://youtube.com/...')">
+<img src="tubebutton.webp" class="social-btn">
+</a>
+<span class="wing wing-right">🪽</span>
+</div>
 
 </div>
 
-
-
-
-
-
-  
-
-</br>
-</br>
-
+</div>
 
 <script>
-// Snow generator
+// Snow
 function createSnow() {
   const snow = document.createElement("div");
   snow.classList.add("snowflake");
@@ -348,71 +329,42 @@ function createSnow() {
   snow.style.left = Math.random() * window.innerWidth + "px";
   snow.style.animationDuration = (3 + Math.random() * 10) + "s";
   document.body.appendChild(snow);
-
   setTimeout(() => snow.remove(), 8000);
 }
-
 setInterval(createSnow, 150);
-</script>
 
-
-
-
-<script>
+// Confirm
 let targetLink = "";
 
-// Vibrate helper
-function vibrate(pattern = [30]) {
-  if (navigator.vibrate) {
-    navigator.vibrate(pattern);
-  }
-}
-
-// Open popup
 function openConfirm(url) {
-  vibrate([20, 40, 20]); // small buzz
   targetLink = url;
   document.getElementById("confirmBox").style.display = "flex";
-  document.getElementById("confirmUrl").innerText = url.replace("https://", "");
+  document.getElementById("confirmUrl").innerText = url;
 }
 
-// Close popup
 function closeConfirm() {
-  vibrate(30);
   document.getElementById("confirmBox").style.display = "none";
 }
 
-// Wait for DOM
 window.onload = function () {
-
   document.getElementById("visitBtn").onclick = function () {
-    vibrate([50, 30, 80]); // stronger vibration
     window.open(targetLink, "_blank");
     closeConfirm();
   };
-
 };
 </script>
 
-
-
-
-
-
-
-<!-- Confirm Popup -->
 <div id="confirmBox" class="confirm-box">
   <div class="confirm-card">
     <h3>Are you sure?</h3>
     <p>You are going to visit</p>
-
     <div class="url-box" id="confirmUrl"></div>
-
     <div class="confirm-actions">
       <button id="visitBtn" class="visit">Visit</button>
       <button onclick="closeConfirm()" class="cancel">Cancel</button>
     </div>
   </div>
 </div>
+
 </body>
 </html>
