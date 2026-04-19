@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snow Entry Page ❄️</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(#0f2027, #203a43, #2c5364);
+  height: 100vh;
+}
+
+/* Snow container */
+.snow {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Snowflakes */
+.snow span {
+  position: absolute;
+  top: -10px;
+  color: white;
+  font-size: 12px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* Entry screen */
+#entry {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Button */
+button {
+  padding: 15px 35px;
+  font-size: 20px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: #ddd;
+}
+
+/* Main content */
+#main {
+  display: none;
+  color: white;
+  text-align: center;
+  margin-top: 40vh;
+  font-size: 30px;
+}
+</style>
+
+</head>
+<body>
+
+<!-- Snow -->
+<div class="snow" id="snow"></div>
+
+<!-- Entry Screen -->
+<div id="entry">
+  <button onclick="enterPage()">Click to Enter ❄️</button>
+</div>
+
+<!-- Main Content -->
+<div id="main">
+  Welcome 🎉  
+</div>
+
+<script>
+// Generate snowflakes
+const snowContainer = document.getElementById("snow");
+
+for (let i = 0; i < 80; i++) {
+  let snow = document.createElement("span");
+  snow.innerHTML = "❄";
+  
+  snow.style.left = Math.random() * 100 + "vw";
+  snow.style.animationDuration = (2 + Math.random() * 5) + "s";
+  snow.style.opacity = Math.random();
+
+  snowContainer.appendChild(snow);
+}
+
+// Enter button function
+function enterPage() {
+  document.getElementById("entry").style.display = "none";
+  document.getElementById("main").style.display = "block";
+}
+</script>
+
+</body>
+</html>
