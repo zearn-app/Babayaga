@@ -329,7 +329,7 @@ function createSnow() {
   snow.classList.add("snowflake");
   snow.innerHTML = "❄";
   snow.style.left = Math.random() * window.innerWidth + "px";
-  snow.style.animationDuration = (3 + Math.random() * 5) + "s";
+  snow.style.animationDuration = (3 + Math.random() * 10) + "s";
   document.body.appendChild(snow);
 
   setTimeout(() => snow.remove(), 8000);
