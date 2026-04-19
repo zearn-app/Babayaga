@@ -1,370 +1,363 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dark Profile ✦</title>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Dark Profile ✦</title>  
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;500&display=swap" rel="stylesheet">  
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<style>  
+* {  
+  margin: 0;  
+  padding: 0;  
+  box-sizing: border-box;  
+}  
 
-body {
-  height: 100vh;
-  overflow: hidden;
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at center, #ff8c00, #0a0a0a 70%);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+body {  
+  height: 100vh;  
+  overflow: hidden;  
+  font-family: 'Poppins', sans-serif;  
+  background: radial-gradient(circle at center, #ff8c00, #0a0a0a 70%);  
+  color: white;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+}  
 
-/* Snow */
-.snowflake {
-  position: absolute;
-  top: -10px;
-  color: white;
-  font-size: 14px;
-  opacity: 0.8;
-  animation: fall linear infinite;
-}
+/* Snow */  
+.snowflake {  
+  position: absolute;  
+  top: -10px;  
+  color: white;  
+  font-size: 14px;  
+  opacity: 0.8;  
+  animation: fall linear infinite;  
+}  
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-  }
-}
+@keyframes fall {  
+  to { transform: translateY(110vh); }  
+}  
 
-/* Main Container */
-.container {
-  text-align: center;
-  position: relative;
-}
+.container {  
+  text-align: center;  
+  position: relative;  
+}  
 
-/* ICONS */
-.icon-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
+/* ICONS */  
+.icon-img {  
+  width: 50px;  
+  height: 50px;  
+  border-radius: 50%;  
+}  
 
-.icon-wrap {
-  position: relative;
-  display: inline-block;
-}
+.icon-wrap {  
+  position: relative;  
+  display: inline-block;  
+}  
 
-.icon-img:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 25px #ff4d6d;
-}
+.icon-img:hover {  
+  transform: scale(1.2);  
+  box-shadow: 0 0 25px #ff4d6d;  
+}  
 
-/* Profile Image */
-.profile-img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  border: 3px solid white;
-  object-fit: cover;
-  margin-bottom: 15px;
-  box-shadow: 0 0 25px rgba(255,255,255,0.4);
-}
+/* Profile Image */  
+.profile-img {  
+  width: 130px;  
+  height: 130px;  
+  border-radius: 50%;  
+  border: 3px solid white;  
+  object-fit: cover;  
+  margin-bottom: 15px;  
+  box-shadow: 0 0 25px rgba(255,255,255,0.4);  
+}  
 
-/* NAME WITH PARTICLES */
-.name {
-  font-size: 42px;
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 5px;
-  position: relative;
+/* NAME TYPEWRITER */  
+.name {  
+  font-size: 42px;  
+  font-family: 'Playfair Display', serif;  
+  margin-bottom: 5px;  
+  white-space: nowrap;  
+  overflow: hidden;  
+  border-right: 2px solid white;  
 
-  background: linear-gradient(90deg, #fff, #ffcc70, #fff);
-  background-size: 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: linear-gradient(90deg, #fff, #ffcc70, #fff);  
+  background-size: 200%;  
+  -webkit-background-clip: text;  
+  -webkit-text-fill-color: transparent;  
 
-  animation: shine 5s linear infinite, fadeUp 1s ease forwards;
-}
+  animation: typing 3s steps(10), blink .7s infinite, shine 5s linear infinite;  
+}  
 
-/* Glow pulse */
-.name::after {
-  content: "Babayaga";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: transparent;
-  text-shadow: 0 0 10px rgba(255, 200, 100, 0.4),
-               0 0 20px rgba(255, 150, 50, 0.3);
-  animation: glowPulse 3s infinite alternate;
-}
+@keyframes typing {  
+  from { width: 0 }  
+  to { width: 100% }  
+}  
 
-/* Dark particles inside text */
-.name::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, rgba(0,0,0,0.6) 2px, transparent 3px);
-  background-size: 20px 20px;
-  opacity: 0.4;
-  animation: moveParticles 10s linear infinite;
-  mix-blend-mode: overlay;
-}
+@keyframes blink {  
+  50% { border-color: transparent }  
+}  
 
-/* Animations */
-@keyframes shine {
-  to { background-position: 200% center; }
-}
+/* glow */  
+.name::after {  
+  content: "Babayaga";  
+  position: absolute;  
+  left: 0;  
+  top: 0;  
+  color: transparent;  
+  text-shadow: 0 0 10px rgba(255,200,100,0.4),  
+               0 0 20px rgba(255,150,50,0.3);  
+  animation: glowPulse 3s infinite alternate;  
+}  
 
-@keyframes glowPulse {
-  from { opacity: 0.4; }
-  to { opacity: 0.8; }
-}
+/* floating effect */  
+@keyframes floatText {  
+  0%,100% { transform: translateY(0); }  
+  50% { transform: translateY(-5px); }  
+}  
 
-@keyframes moveParticles {
-  from { background-position: 0 0; }
-  to { background-position: 200px 200px; }
-}
+/* BIO */  
+.bio {  
+  font-size: 18px;  
+  opacity: 0;  
+  margin-bottom: 10px;  
+  animation: fadeSlide 1s ease forwards, floatText 4s ease-in-out infinite;  
+  animation-delay: 0.6s, 2s;  
+}  
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* LOCATION */  
+.location {  
+  font-size: 16px;  
+  opacity: 0;  
+  margin-bottom: 20px;  
+  animation: fadeSlide 1s ease forwards, floatText 5s ease-in-out infinite;  
+  animation-delay: 1s, 2.5s;  
+}  
 
-/* TEXT ANIMATIONS */
-.bio {
-  font-size: 18px;
-  opacity: 0;
-  margin-bottom: 10px;
-  animation: fadeUp 1s ease forwards;
-  animation-delay: 0.4s;
-}
+/* Card */  
+.card {  
+  backdrop-filter: blur(15px);  
+  background: rgba(255,255,255,0.1);  
+  border-radius: 20px;  
+  padding: 15px;  
+  width: 280px;  
+  margin: auto;  
+  display: flex;  
+  align-items: center;  
+  gap: 12px;  
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);  
 
-.location {
-  font-size: 16px;
-  opacity: 0;
-  margin-bottom: 20px;
-  animation: fadeUp 1s ease forwards;
-  animation-delay: 0.7s;
-}
+  opacity: 0;  
+  transform: translateY(20px);  
+  animation: fadeSlide 1s ease forwards;  
+  animation-delay: 1.3s;  
+}  
 
-/* Glass Card */
-.card {
-  backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.1);
-  border-radius: 20px;
-  padding: 15px;
-  width: 280px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+.card-text b {  
+  display: block;  
+  animation: textReveal 1s ease forwards;  
+  opacity: 0;  
+  animation-delay: 1.6s;  
+}  
 
-  animation: fadeUp 1s ease forwards;
-  animation-delay: 1s;
-}
+.card-text span {  
+  display: block;  
+  font-size: 13px;  
+  opacity: 0;  
+  animation: textReveal 1s ease forwards;  
+  animation-delay: 1.9s;  
+}  
 
-.card img {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-}
+/* animations */  
+@keyframes fadeSlide {  
+  from { opacity: 0; transform: translateY(20px); }  
+  to { opacity: 1; transform: translateY(0); }  
+}  
 
-.card-text span {
-  display: block;
-  font-size: 13px;
-  opacity: 0.7;
-}
+@keyframes textReveal {  
+  from { opacity: 0; letter-spacing: 10px; }  
+  to { opacity: 1; letter-spacing: 0; }  
+}  
 
-/* icons */
-.icons {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-}
+@keyframes shine {  
+  to { background-position: 200% center; }  
+}  
 
-.social-btn {
-  width: 55px;
-  height: 55px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 10px gold);
-  transition: 0.3s ease;
-}
+@keyframes glowPulse {  
+  from { opacity: 0.4; }  
+  to { opacity: 0.8; }  
+}  
 
-.social-btn:hover {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 20px #ffcc70);
-}
+/* icons */  
+.icons {  
+  margin-top: 25px;  
+  display: flex;  
+  justify-content: center;  
+  gap: 18px;  
+}  
 
-/* Wings */
-.wing {
-  position: absolute;
-  font-size: 22px;
-  opacity: 0.9;
-  top: 50%;
-  transform: translateY(-50%);
-}
+.social-btn {  
+  width: 55px;  
+  height: 55px;  
+  object-fit: contain;  
+  filter: drop-shadow(0 0 10px gold);  
+  transition: 0.3s ease;  
+}  
 
-.wing-left { left: -20px; }
-.wing-right { right: -20px; }
+.social-btn:hover {  
+  transform: scale(1.2);  
+  filter: drop-shadow(0 0 20px #ffcc70);  
+}  
 
-/* Confirm Box */
-.confirm-box {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.7);
-}
+/* Wings */  
+.wing {  
+  position: absolute;  
+  font-size: 22px;  
+  opacity: 0.9;  
+  top: 50%;  
+  transform: translateY(-50%);  
+}  
 
-.confirm-card {
-  width: 300px;
-  padding: 20px;
-  border-radius: 20px;
-  background: #111;
-  color: white;
-  animation: pop 0.3s ease;
-}
+.wing-left { left: -20px; }  
+.wing-right { right: -20px; }  
 
-@keyframes pop {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
+/* Confirm Box */  
+.confirm-box {  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  width: 100%;  
+  height: 100%;  
+  display: none;  
+  align-items: center;  
+  justify-content: center;  
+  background: rgba(0,0,0,0.7);  
+}  
 
-.url-box {
-  background: #2a2a2a;
-  padding: 8px;
-  border-radius: 10px;
-  margin: 10px 0 15px;
-}
+.confirm-card {  
+  width: 300px;  
+  padding: 20px;  
+  border-radius: 20px;  
+  background: #111;  
+  color: white;  
+  animation: pop 0.3s ease;  
+}  
 
-.confirm-actions {
-  display: flex;
-}
+@keyframes pop {  
+  from { transform: scale(0.8); opacity: 0; }  
+  to { transform: scale(1); opacity: 1; }  
+}  
 
-.confirm-actions button {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  margin: 0 5px;
-}
+.url-box {  
+  background: #2a2a2a;  
+  padding: 8px;  
+  border-radius: 10px;  
+  margin: 10px 0 15px;  
+}  
 
-.visit {
-  background: linear-gradient(45deg, #7b2ff7, #f107a3);
-}
+.confirm-actions {  
+  display: flex;  
+}  
 
-.cancel {
-  background: #333;
-}
+.confirm-actions button {  
+  flex: 1;  
+  padding: 10px;  
+  border: none;  
+  border-radius: 10px;  
+  margin: 0 5px;  
+}  
 
-</style>
-</head>
+.visit { background: linear-gradient(45deg, #7b2ff7, #f107a3); }  
+.cancel { background: #333; }  
 
-<body>
+</style>  
+</head>  
 
-<div class="container">
+<body>  
 
-<img src="pfg.jpg" class="profile-img">
+<div class="container">  
 
-<div class="name">Babayaga</div>
-<div class="bio">Dark Dominance ..</div>
-<div class="location">📍 coimbatore</div>
+<img src="pfg.jpg" class="profile-img">  
 
-<div class="card">
-  <img src="IMG_20260417_151049_449.webp">
-  <div class="card-text">
-    <b>acpxp 🦋 3luv</b>
-    <span>last seen 1 hour ago</span>
-  </div>
-</div>
+<div class="name">Babayaga</div>  
+<div class="bio">Dark Dominance ..</div>  
+<div class="location">📍 coimbatore</div>  
 
-<div class="icons">
+<div class="card">  
+  <img src="IMG_20260417_151049_449.webp">  
+  <div class="card-text">  
+    <b>acpxp 🦋 3luv</b>  
+    <span>last seen 1 hour ago</span>  
+  </div>  
+</div>  
 
-<div class="icon-wrap">
-<span class="wing wing-left">🪽</span>
+<div class="icons">  
 <a href="#" onclick="openConfirm('https://www.instagram.com/babayaga__4luv')">
 <img src="instabutton.webp" class="social-btn">
-</a>
-</div>
+</a>  
 
 <a href="#" onclick="openConfirm('https://t.me/yourlink')">
 <img src="telebutton.webp" class="social-btn">
-</a>
+</a>  
 
 <a href="#" onclick="openConfirm('https://discord.gg/yourlink')">
 <img src="disbutton.webp" class="social-btn">
-</a>
+</a>  
 
 <a href="#" onclick="openConfirm('https://spotify.com/...')">
 <img src="spotbutton.webp" class="social-btn">
-</a>
+</a>  
 
-<div class="icon-wrap">
 <a href="#" onclick="openConfirm('https://youtube.com/...')">
 <img src="tubebutton.webp" class="social-btn">
-</a>
-<span class="wing wing-right">🪽</span>
-</div>
+</a>  
+</div>  
 
-</div>
+</div>  
 
-</div>
+<script>  
+function createSnow() {  
+  const snow = document.createElement("div");  
+  snow.classList.add("snowflake");  
+  snow.innerHTML = "❄";  
+  snow.style.left = Math.random() * window.innerWidth + "px";  
+  snow.style.animationDuration = (3 + Math.random() * 10) + "s";  
+  document.body.appendChild(snow);  
+  setTimeout(() => snow.remove(), 8000);  
+}  
+setInterval(createSnow, 150);  
 
-<script>
-// Snow
-function createSnow() {
-  const snow = document.createElement("div");
-  snow.classList.add("snowflake");
-  snow.innerHTML = "❄";
-  snow.style.left = Math.random() * window.innerWidth + "px";
-  snow.style.animationDuration = (3 + Math.random() * 10) + "s";
-  document.body.appendChild(snow);
-  setTimeout(() => snow.remove(), 8000);
-}
-setInterval(createSnow, 150);
+let targetLink = "";  
 
-// Confirm
-let targetLink = "";
+function openConfirm(url) {  
+  targetLink = url;  
+  document.getElementById("confirmBox").style.display = "flex";  
+  document.getElementById("confirmUrl").innerText = url;  
+}  
 
-function openConfirm(url) {
-  targetLink = url;
-  document.getElementById("confirmBox").style.display = "flex";
-  document.getElementById("confirmUrl").innerText = url;
-}
+function closeConfirm() {  
+  document.getElementById("confirmBox").style.display = "none";  
+}  
 
-function closeConfirm() {
-  document.getElementById("confirmBox").style.display = "none";
-}
+window.onload = function () {  
+  document.getElementById("visitBtn").onclick = function () {  
+    window.open(targetLink, "_blank");  
+    closeConfirm();  
+  };  
+};  
+</script>  
 
-window.onload = function () {
-  document.getElementById("visitBtn").onclick = function () {
-    window.open(targetLink, "_blank");
-    closeConfirm();
-  };
-};
-</script>
+<div id="confirmBox" class="confirm-box">  
+  <div class="confirm-card">  
+    <h3>Are you sure?</h3>  
+    <p>You are going to visit</p>  
+    <div class="url-box" id="confirmUrl"></div>  
+    <div class="confirm-actions">  
+      <button id="visitBtn" class="visit">Visit</button>  
+      <button onclick="closeConfirm()" class="cancel">Cancel</button>  
+    </div>  
+  </div>  
+</div>  
 
-<div id="confirmBox" class="confirm-box">
-  <div class="confirm-card">
-    <h3>Are you sure?</h3>
-    <p>You are going to visit</p>
-    <div class="url-box" id="confirmUrl"></div>
-    <div class="confirm-actions">
-      <button id="visitBtn" class="visit">Visit</button>
-      <button onclick="closeConfirm()" class="cancel">Cancel</button>
-    </div>
-  </div>
-</div>
-
-</body>
+</body>  
 </html>
