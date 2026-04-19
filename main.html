@@ -337,11 +337,23 @@ function createSnow() {
 
 setInterval(createSnow, 150);
 </script>
+
+
+
+
 <script>
 let targetLink = "";
 
+// Vibrate helper
+function vibrate(pattern = [30]) {
+  if (navigator.vibrate) {
+    navigator.vibrate(pattern);
+  }
+}
+
 // Open popup
 function openConfirm(url) {
+  vibrate([20, 40, 20]); // small buzz
   targetLink = url;
   document.getElementById("confirmBox").style.display = "flex";
   document.getElementById("confirmUrl").innerText = url.replace("https://", "");
@@ -349,15 +361,27 @@ function openConfirm(url) {
 
 // Close popup
 function closeConfirm() {
+  vibrate(30);
   document.getElementById("confirmBox").style.display = "none";
 }
 
-// Visit link
-document.getElementById("visitBtn").onclick = function () {
-  window.open(targetLink, "_blank");
-  closeConfirm();
+// Wait for DOM
+window.onload = function () {
+
+  document.getElementById("visitBtn").onclick = function () {
+    vibrate([50, 30, 80]); // stronger vibration
+    window.open(targetLink, "_blank");
+    closeConfirm();
+  };
+
 };
 </script>
+
+
+
+
+
+
 
 <!-- Confirm Popup -->
 <div id="confirmBox" class="confirm-box">
