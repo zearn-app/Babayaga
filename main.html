@@ -348,6 +348,26 @@ function createSnow() {
 
 setInterval(createSnow, 150);
 </script>
+<script>
+let targetLink = "";
 
+// Open popup
+function openConfirm(url) {
+  targetLink = url;
+  document.getElementById("confirmBox").style.display = "flex";
+  document.getElementById("confirmUrl").innerText = url.replace("https://", "");
+}
+
+// Close popup
+function closeConfirm() {
+  document.getElementById("confirmBox").style.display = "none";
+}
+
+// Visit link
+document.getElementById("visitBtn").onclick = function () {
+  window.open(targetLink, "_blank");
+  closeConfirm();
+};
+</script>
 </body>
 </html>
