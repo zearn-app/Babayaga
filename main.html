@@ -60,7 +60,6 @@ body {
 .icon-img:hover {  
   transform: scale(1.2);  
   box-shadow: 0 0 25px #ff4d6d;  
-  transition: 0.3s ease;
 }  
 
 /* Profile Image */  
@@ -76,6 +75,8 @@ body {
 
 /* NAME TYPEWRITER */  
 .name {  
+  position: relative;
+  display: inline-block;
   font-size: 42px;  
   font-family: 'Playfair Display', serif;  
   margin-bottom: 5px;  
@@ -99,6 +100,29 @@ body {
 @keyframes blink {  
   50% { border-color: transparent }  
 }  
+
+/* 🔥 GLASS REFLECTION EFFECT */
+.name::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  transform: skewX(-25deg);
+  animation: glassMove 3s linear infinite;
+}
+
+@keyframes glassMove {
+  0% { left: -80%; }
+  100% { left: 140%; }
+}
 
 /* glow */  
 .name::after {  
@@ -169,6 +193,7 @@ body {
   animation: textReveal 1s ease forwards;  
   animation-delay: 1.9s;  
 }  
+
 .card img {
   width: 45px;
   height: 45px;
@@ -191,11 +216,6 @@ body {
   to { background-position: 200% center; }  
 }  
 
-@keyframes glowPulse {  
-  from { opacity: 0.4; }  
-  to { opacity: 0.8; }  
-}  
-
 /* icons */  
 .icons {  
   margin-top: 25px;  
@@ -216,18 +236,6 @@ body {
   transform: scale(1.2);  
   filter: drop-shadow(0 0 20px #ffcc70);  
 }  
-
-/* Wings */  
-.wing {  
-  position: absolute;  
-  font-size: 22px;  
-  opacity: 0.9;  
-  top: 50%;  
-  transform: translateY(-50%);  
-}  
-
-.wing-left { left: -20px; }  
-.wing-right { right: -20px; }  
 
 /* Confirm Box */  
 .confirm-box {  
@@ -273,7 +281,6 @@ body {
   padding: 10px;  
   border: none;  
   border-radius: 10px;  
-  margin: 0 5px;  
 }  
 
 .visit { background: linear-gradient(45deg, #7b2ff7, #f107a3); }  
